@@ -36,7 +36,7 @@ app.post('/events', verifyToken, eventCtrl.create)
 app.get('/events', verifyToken, eventsCtrl.index)
 app.get('/events/:eventId', verifyToken, eventCtrl.show)
 app.put('/events/:eventId', verifyToken, eventCtrl.update)
-// app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
+app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
 
 app.get('/users', verifyToken, usersCtrl.index)
 
