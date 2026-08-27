@@ -14,8 +14,8 @@ const PORT = process.env.PORT ? process.env.PORT : "3000"
 
 const authCtrl = require('./controllers/auth')
 const usersCtrl = require('./controllers/users')
-// const eventCtrl = require('./controllers/events')
-// const verifyToken = require('./middleware/verify-token')
+const eventCtrl = require('./controllers/events')
+const verifyToken = require('./middleware/verify-token')
 
 mongoose.connect(process.env.MONGODB_URI)
 
