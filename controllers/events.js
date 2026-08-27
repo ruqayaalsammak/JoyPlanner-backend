@@ -10,6 +10,18 @@
     }
  }
 
+const index = async (req, res) => {
+    try{
+        const events = await Event.find({})
+        .populate("user")
+        .sort({ createdAt: "desc" })
+        res.status(200).json(events)
+    } catch (err) {
+        res.status(500).json({ err: err.message })
+    }
+}
+
  module.exports = {
     create, 
+    index, 
  }
