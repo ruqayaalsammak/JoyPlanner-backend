@@ -17,8 +17,9 @@ const index = async (req, res) => {
         const reviews = await Review.find({ eventId: req.params.eventId })
            .populate('userId')
            .sort({ createdAt: 'desc' })
-        res.status(500).json({ err: err.message })
-
+        res.status(200).json(reviews)
+    } catch (err) {
+        res.status(500).json({ err: err.message})
     }
 }
 
