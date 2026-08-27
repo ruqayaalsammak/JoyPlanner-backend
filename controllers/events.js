@@ -21,7 +21,17 @@ const index = async (req, res) => {
     }
 }
 
+const show = async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.eventId).populate("user")
+        res.status(200).json(event)
+    } catch (err) {
+        res.status(500).json({ err: err.message })
+    }
+}
+
  module.exports = {
     create, 
     index, 
+    show,
  }
