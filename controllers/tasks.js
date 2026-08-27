@@ -22,8 +22,21 @@ const index = async (req, res) => {
     }
 }
 
+const update = async (req, res) => {
+    try {
+        const updatedTask = await Task.findByIdAndUpdate(
+            req.params.taskId,
+            req.body,
+            { new: true }
+        )
+        res.status(200).json(updatedTask)
+    } catch (err) {
+        res.status(500).json({ err: err.message })
+    }
+}
 
 module.exports = {
     create,
     index,
+    update,
 }
