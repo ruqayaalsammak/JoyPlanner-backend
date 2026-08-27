@@ -41,6 +41,8 @@ app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
 app.post('/events/:eventId/tasks', verifyToken, tasksCtrl.create)
 app.get('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.index)
 app.put('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.update)
+app.delete('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.deleteTask)
+
 
 app.get('/users', verifyToken, usersCtrl.index)
 
