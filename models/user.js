@@ -9,11 +9,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-}, {timestamps: true})
+}, { timestamps: true })
 
 userSchema.set('toJSON', {
-    transform: (document, returnedObject) => {
-        delete returnedObject.password
+    transform: (document, returndObject) => {
+        delete returndObject.password
     }
 })
 

@@ -1,3 +1,8 @@
+const dns = require("node:dns");
+
+dns.setServers(["8.8.8.8", "1.1.1.1"])
+
+
 const dotenv = require('dotenv').config()
 const express = require('express')
 const app = express()
@@ -9,8 +14,8 @@ const PORT = process.env.PORT ? process.env.PORT : "3000"
 
 const authCtrl = require('./controllers/auth')
 const usersCtrl = require('./controllers/users')
-
-const verifyToken = require('./middleware/verify-token')
+// const eventCtrl = require('./controllers/events')
+// const verifyToken = require('./middleware/verify-token')
 
 mongoose.connect(process.env.MONGODB_URI)
 
@@ -22,11 +27,16 @@ app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
 
-// Routes go here
+// Event Roures
 // app.get('/auth/sign-token', authCtrl.signToken)
 // app.get('/auth/verify-token', authCtrl.verifyToken)
 app.post('/auth/sign-up', authCtrl.signUp)
 app.post('/auth/sign-in', authCtrl.signIn)
+app.post('/events', verifyToken, eventCtrl.create)
+// app.get('/events', verifyToken, eventsCtrl.index)
+// app.get('/events/:eventId', verifyToken, eventCtrl.show)
+// app.put('/events/:eventId', verifyToken, eventCtrl.update)
+// app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
 
 app.get('/users', verifyToken, usersCtrl.index)
 
