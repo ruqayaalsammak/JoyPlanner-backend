@@ -35,8 +35,18 @@ const update = async (req, res) => {
     }
 }
 
+const deleteTask = async (req, res) => {
+    try {
+        const deleteTask = await Task.findByIdAndDelete(req.params.taskId)
+        res.status(200).json(deletedTask)
+    } catch (err) {
+        res.status(500).json({ err: err.message })
+    }
+}
+
 module.exports = {
     create,
     index,
     update,
+    deleteTask,
 }
