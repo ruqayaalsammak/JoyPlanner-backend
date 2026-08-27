@@ -12,7 +12,20 @@ const create = async (req, res) => {
     }
 }
 
+const index = async (req, res) => {
+    try {
+        const reviews = await Review.find({ eventId: req.params.eventId })
+           .populate('userId')
+           .sort({ createdAt: 'desc' })
+        res.status(500).json({ err: err.message })
+
+    }
+}
+
+
+
 
 module.exports = {
     create,
+    index,
 }
