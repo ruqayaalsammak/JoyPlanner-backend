@@ -30,8 +30,31 @@ const show = async (req, res) => {
     }
 }
 
+const update = async (req, res) => {
+    try {
+        const event = await Event.findById(req.params.eventId)
+
+        if (!event.user.equals(req.user._id)) {
+            return res.status(403).send("You're not allowed to do that!")
+        }
+
+        const updatedEvent = await Event.findByIdAndUpdate(
+            req.params.eventId,
+            req.body,
+            { new: true }
+        )
+
+        updatedEvent._doc.user = req.user
+
+        res.status(200).json(updatedEvent)
+    } catch (err) {
+        res.status(500).json({ err: err.message })
+    }
+}
+
  module.exports = {
     create, 
     index, 
     show,
+    update,
  }
