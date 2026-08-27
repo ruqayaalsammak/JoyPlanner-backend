@@ -34,7 +34,7 @@ app.post('/auth/sign-up', authCtrl.signUp)
 app.post('/auth/sign-in', authCtrl.signIn)
 app.post('/events', verifyToken, eventCtrl.create)
 app.get('/events', verifyToken, eventsCtrl.index)
-// app.get('/events/:eventId', verifyToken, eventCtrl.show)
+app.get('/events/:eventId', verifyToken, eventCtrl.show)
 // app.put('/events/:eventId', verifyToken, eventCtrl.update)
 // app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
 
