@@ -43,7 +43,8 @@ app.get('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.index)
 app.put('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.update)
 app.delete('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.deleteTask)
 app.post('/events/:eventId/reviews', verifyToken, reviewsCtrl.create)
-
+app.get('/events/:eventId/reviews', verifyToken, reviewsCtrl.index)
+app.delete('/events/:eventId/reviews/:reviewId', verifyToken, reviewsCtrl.deleteReview)
 app.get('/users', verifyToken, usersCtrl.index)
 
 app.listen(PORT, () => {
