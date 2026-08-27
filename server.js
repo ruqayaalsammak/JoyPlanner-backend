@@ -15,6 +15,7 @@ const PORT = process.env.PORT ? process.env.PORT : "3000"
 const authCtrl = require('./controllers/auth')
 const usersCtrl = require('./controllers/users')
 const eventCtrl = require('./controllers/events')
+const tasksCtrl = require('./controllers/tasks')
 const verifyToken = require('./middleware/verify-token')
 
 mongoose.connect(process.env.MONGODB_URI)
@@ -37,6 +38,9 @@ app.get('/events', verifyToken, eventsCtrl.index)
 app.get('/events/:eventId', verifyToken, eventCtrl.show)
 app.put('/events/:eventId', verifyToken, eventCtrl.update)
 app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
+app.post('/events/:eventId/tasks', verifyToken, tasksCtrl.create)
+
+
 
 app.get('/users', verifyToken, usersCtrl.index)
 
