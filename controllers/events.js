@@ -61,10 +61,11 @@ const deleteEvent = async (req, res) => {
         }
 
         const deletedEvent = await Event.findByIdAndDelete(req.params.eventId)
-        res.status(200).json(deleteEvent)
+        res.status(200).json(deletedEvent)
     } catch (err) {
         res.status(500).json({ err: err.message })
     }
+
 }
 
  module.exports = {
@@ -72,5 +73,5 @@ const deleteEvent = async (req, res) => {
     index, 
     show,
     update,
-    deletedEvent,
+    deleteEvent,
  }

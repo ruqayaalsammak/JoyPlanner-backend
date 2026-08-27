@@ -39,7 +39,7 @@ app.get('/events/:eventId', verifyToken, eventCtrl.show)
 app.put('/events/:eventId', verifyToken, eventCtrl.update)
 app.delete('/events/:eventId', verifyToken, eventCtrl.deleteEvent)
 app.post('/events/:eventId/tasks', verifyToken, tasksCtrl.create)
-
+app.get('/events/:eventId/tasks/:taskId', verifyToken, tasksCtrl.index)
 
 
 app.get('/users', verifyToken, usersCtrl.index)
